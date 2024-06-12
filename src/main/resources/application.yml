@@ -1,0 +1,16 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: Gateway-api
+  cloud:
+    gateway:
+      routes:
+        - id: Citizen-service
+          uri: lb://Citizen-service
+          predicates:
+            - Path=/citizen/**
+        - id: Vaccination-service
+          uri: lb://Vaccination-service
+          predicates:
+            - Path=/vaccination/**
